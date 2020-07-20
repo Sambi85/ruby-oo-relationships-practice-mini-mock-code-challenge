@@ -1,9 +1,9 @@
 class Book
-    attr_accessor :book_name
-    attr_reader :words, :author_name
+    
+    attr_reader :book_name, :words
     @@all = []
 
-    def initialize(book_name, words= 200)
+    def initialize(book_name, words)
         @book_name = book_name
         @words = words  
 
@@ -14,29 +14,21 @@ class Book
         @@all 
     end 
 
-    def create_book(author_name)
-    end
-
-    # - `Book#author`
-        def author
-            self.name
+        def book_authors                              
+           Bookstore.all.select {|bookstore| bookstore.book == self}   ### Helper method
         end
-    # should return the author instance who wrote this book
-    # - `Book#title
+
+        def authors
+            self.book_authors.map {|book_author| book_author.author}.uniq
+        end
+
         def title
-            self.book_name 
+            self.book_name
         end
     
-    # should return the title of the book
-    # - `Book#word_count`
-
-    def word_count
-        self.words
-    end
-    # should return the number of words in the book
-    
-
-
+        def word_count
+            self.words
+        end
 
 
 end
