@@ -1,11 +1,11 @@
 class Book
-    attr_accessor :book_name, :author_name, :words
+    attr_accessor :book_name
+    attr_reader :words, :author_name
     @@all = []
 
-    def initialize(book_name, author_name, words= 200)
+    def initialize(book_name, words= 200)
         @book_name = book_name
-        @author_name = author_name
-        @words = words
+        @words = words  
 
         @@all << self
     end
@@ -13,6 +13,9 @@ class Book
     def self.all
         @@all 
     end 
+
+    def create_book(author_name)
+    end
 
     # - `Book#author`
         def author

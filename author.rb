@@ -2,7 +2,7 @@
 
 class Author
     attr_accessor :author_name
-    attr_reader :title, :words
+    attr_reader :book_name, :words
     @@all = []
 
     def initialize(author_name)
@@ -39,7 +39,7 @@ class Author
      end
 
     def self.most_words
-        ### Solution #1 ### Need to pry !!!!!
+    
        author_hash = Book.all.each_with_object(Hash.new(0)) do |book, new_hash| 
            (new_hash[book.author_name] += book.words)         
         end
