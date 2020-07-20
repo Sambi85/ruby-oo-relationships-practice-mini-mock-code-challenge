@@ -1,5 +1,4 @@
-
-
+require 'pry'
 class Author
     attr_reader :author_name
     attr_writer :book_name
@@ -29,19 +28,18 @@ class Author
         new_bookstore.book
      end
 
-    # def total_words
-    #     self.book_authors.reduce(0) do |all_words, book|
-    #       all_words + book.words
-    #       end
-    #     end
-    # end
+    def total_words
+        self.books.reduce(0) do |all_the_words, book|
+          all_the_words += book.word_count
+          end
+    end
 
      
-#      def self.most_words
-#         self.all.max_by do |author| 
-#           author.total_words
-#         end 
-#       end
-# end
+     def self.most_words
+        self.all.max_by do |author| 
+          author.total_words
+        end 
+      end
+end
 
 
