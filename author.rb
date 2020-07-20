@@ -1,4 +1,4 @@
-require 'pry'
+
 
 class Author
     attr_accessor :author_name
@@ -40,23 +40,13 @@ class Author
 
     def self.most_words
         ### Solution #1 ### Need to pry !!!!!
-    #    author_hash = Book.all.each_with_object(Hash.new(0)) do |book, new_hash| 
-    #        new_hash[book.author_name] += book.words            
-    #     end
-    #          author_hash.max_by{|k,v|k} end
-           
-    ### Solution #2 ### need to pry !!!! 
-    var = Book.all.select do |book|
-                book.words.max{|a,b| a.total_words <=> b.total_words}
-                     
-                    if book.total_words == var
-                        book.author_name 
-                      end
-                    end
-                end 
-            end    
-     end
-        
+       author_hash = Book.all.each_with_object(Hash.new(0)) do |book, new_hash| 
+           (new_hash[book.author_name] += book.words)         
+        end
+         author_hash.max_by{|k,v|v}
+
+     end 
+      
 end
 
 
